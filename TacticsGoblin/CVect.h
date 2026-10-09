@@ -16,7 +16,8 @@ public:
 							CVect()															{ memset(v,0,sizeof(v)); }
 							CVect( const CVect& u)											{ memcpy(v, u.v, sizeof(v)); }
 							CVect( const float &x, const float &y, const float &z )	{ v[0] = x; v[1] = y; v[2] = z; }
-							
+							CVect(const float& x, const float& y) { v[0] = x; v[1] = y; v[2] = 0; }
+
 							CVect( const CVect &v1, const CVect &v2, const float &t )
 							{
 							   v[0] = ( v2.v[0] - v1.v[0] ) * t + v1.v[0];

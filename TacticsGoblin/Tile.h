@@ -1,6 +1,7 @@
 #pragma once
 #include "Sprite.h"
 #include <memory>
+#include "CVect.h"
 
 //Tiles configuration make easier: an enum for each type of tile, and a structure to get the info of each tile
 enum TileType
@@ -43,14 +44,15 @@ class Tile
 {
 protected:
     std::shared_ptr<TileConfig> type;
+    CVect position;
 
 public:
-	Tile() = delete;
-    Tile(std::shared_ptr<TileConfig> _type, int posX, int posY) : type(_type) {};
-	Tile(const Sprite&) = delete;
-	Tile(Tile&&) = delete;
-	Tile& operator=(const Tile&) = delete;
-	~Tile() = default;
+    Tile() = delete;
+    Tile(std::shared_ptr<TileConfig> _type, float posX, float posY) : type(_type), position(posX, posY) {};
+    Tile(const Sprite&) = delete;
+    Tile(Tile&&) = delete;
+    Tile& operator=(const Tile&) = delete;
+    ~Tile() = default;
 
     void Render(SDL_Renderer* screenRenderer, Sprite* tileset, int posX, int posY)
     {
@@ -67,5 +69,8 @@ public:
         return type->type;
     }
 
+    const CVect& GetPosition()
+    {
+        return position;
+    }
 };
-
