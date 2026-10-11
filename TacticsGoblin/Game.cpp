@@ -19,6 +19,8 @@ typedef int Token;
 
 bool Game::Init()
 {
+    srand(time(NULL));
+    
 	_isRunning = true;
     playerController = std::make_shared<PlayerController>();
     playerController->Init(thisWeakPtr.lock());
